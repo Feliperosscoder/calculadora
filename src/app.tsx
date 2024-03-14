@@ -7,16 +7,29 @@ import { Button } from "./components/button";
 
 export function App() {
   const [data, setData] = useState({ operation: "", result: "" });
-  const operation = ["+", "-", "*", "/", "%"];
+  const operation = ["+", "-", "*", "/", "%", "."];
 
   function handleTyping(event: string) {
     if (data.operation.length > 30) return;
+    if (data.operation === "Error") {
+      return setData({ ...data, operation: event });
+    }
 
     const lastChar = data.operation[data.operation.length - 1];
     const isLastCharOperator = operation.includes(lastChar);
-  
+
+    console.log();
+    if (isLastCharOperator && event === "." && lastChar !== ".") {
+      setData({ ...data, operation: `${data.operation}${event}` });
+      return;
+    }
     if (isLastCharOperator && operation.includes(event)) return;
-    
+    if (
+      data.operation.length === 0 &&
+      operation.some((operator) => operator === event) &&
+      event !== "."
+    )
+      return;
 
     if (data.operation.includes("Error"))
       setData({ ...data, operation: event as string });
@@ -59,7 +72,6 @@ export function App() {
         while (data.operation.includes("%")) {
           const parts = data.operation.split("%");
           const expression = parts[0];
-          console.log(` parts[0] = ${expression}`);
 
           let operatorIndex = -1;
           const operation = ["+", "-", "*", "/"];
@@ -76,12 +88,11 @@ export function App() {
               expression.slice(operatorIndex + 1)
             );
 
-            console.log(`percentageNumber: ${percentageNumber}`);
             const rest = expression.slice(0, operatorIndex);
-            console.log(`rest: ${rest}`);
             result = eval(`${rest}`);
 
             let percent = eval(`${result} * ${percentageNumber}/100`);
+
             if (
               expression[operatorIndex] === "*" ||
               expression[operatorIndex] === "/"
@@ -96,11 +107,9 @@ export function App() {
 
             data.operation = newOperation;
 
-            console.log(`result ${result}`);
             result = eval(
               `${result}${expression[operatorIndex]}(${percent})${parts[1]}`
             );
-            console.log(`result ${result}`);
 
             setData({ ...data, result });
           }
@@ -110,7 +119,7 @@ export function App() {
         setData({ ...data, result });
       }
     } catch (error) {
-      setData({ ...data, operation: "Error " });
+      setData({ ...data, operation: "Error" });
     }
   }
 
@@ -122,7 +131,11 @@ export function App() {
             {data.operation}
           </Textfit>
         </div>
-        <div className="result">{data.result}</div>
+        <div className="result">
+          <Textfit mode="single" max={70}>
+            {data.result}
+          </Textfit>
+        </div>
       </div>
       <div className="buttons">
         <Button text="AC" tipo="operation ac" handleClick={handleClear} />
