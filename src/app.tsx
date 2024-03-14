@@ -1,6 +1,6 @@
 import "./app.css";
 
-import Textfit from "react-textfit";
+import {Textfit} from "react-textfit";
 
 import { useState } from "react";
 import { Button } from "./components/button";
