@@ -5,6 +5,6 @@
 
 ## [link para o projeto](https://calculadora-nnny.vercel.app)
 
-![calculadora-1](https://github.com/Feliperosscoder/calculadora/assets/110745949/6fd7f249-64fd-43f9-b077-ca6a481733bc)
+![calculadora-1](https://github.com/Feliperosscoder/calculadora/assets/110745949/8df88b5b-f0d4-4a1c-94e8-3763c8f1edc7)
 
-![calculadora-2](https://github.com/Feliperosscoder/calculadora/assets/110745949/4aa572d2-461e-40d3-a39f-03864df60b17)
+![calculadora-2](https://github.com/Feliperosscoder/calculadora/assets/110745949/5e5926b6-e999-4be6-bcd3-41945b8cf25b)
