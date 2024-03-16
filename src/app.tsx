@@ -33,6 +33,18 @@ export function App() {
 
     if (data.operation.includes("Error"))
       setData({ ...data, operation: event as string });
+
+      
+      if (event === ".") {
+        // Verifica se o último número na expressão já contém um ponto decimal
+      const numbersAndOperators = data.operation.split(/[-+*/]/);
+      const lastNumber = numbersAndOperators.pop();
+        console.log(numbersAndOperators)
+        if (lastNumber && lastNumber.includes(".")) {
+          // Se o último número já contiver um ponto decimal, não permita adicionar outro
+          return;
+        }
+      }
     if (
       data.result !== "" &&
       data.operation === "" &&
@@ -74,10 +86,10 @@ export function App() {
           const expression = parts[0];
 
           let operatorIndex = -1;
-          const operation = ["+", "-", "*", "/"];
+          const operations = ["+", "-", "*", "/"];
 
           for (let i = expression.length - 1; i >= 0; i--) {
-            if (operation.includes(expression[i])) {
+            if (operations.includes(expression[i])) {
               operatorIndex = i;
               break;
             }
