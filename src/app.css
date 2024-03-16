@@ -25,7 +25,7 @@ body.active {
 .calculator {
   width: 450px;
   height: 80vh;
-  background: #EEE;
+  background: #eee;
   border-radius: 25px;
   box-shadow: 1px 0 15px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -38,7 +38,7 @@ body.active {
 }
 
 .calculator.active {
-  background: #1C1C1C;
+  background: #1c1c1c;
 }
 
 .container-toggle {
@@ -56,28 +56,28 @@ body.active {
   transition: 0.3s;
   cursor: pointer;
   box-shadow: inset 0 8px 60px rgba(0, 0, 0, 0.1),
-    inset 0 8px 8px rgba(0, 0, 0, 0.1), inset 0 -4px -4px rgba(0, 0, 0, 0.1);
+    inset 0 8px 8px rgba(0, 0, 0, 0.1), inset 0 -4px 4px rgba(0, 0, 0, 0.1);
 }
 
-.indicator {
+.toggle.active {
+  background: #fff;
+  box-shadow: inset 0 2px 60px rgba(0, 0, 0, 0.1),
+    inset 0 2px 5px rgba(0, 0, 0, 0.1), inset 0 -2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.toggle .indicator {
   position: absolute;
   top: 0;
   left: 0;
   width: 30px;
   height: 30px;
-  background: linear-gradient(to bottom, #EAEAEA, #F9F9F9);
+  background: linear-gradient(to bottom, #eaeaea, #f9f9f9);
   border-radius: 50%;
   transform: scale(0.9);
   box-shadow: 0 8px 40px rgb(0, 0, 0, 0.5),
-    inset 0 4px 4px rgba(255, 255, 255 0.2),
-    inset 0 -4px 4px rgba(255, 255, 255 0.2);
+    inset 0 4px 4px rgba(255, 255, 255, 0.2),
+    inset 0 -4px 4px rgba(255, 255, 255, 0.2);
   transition: 0.3s;
-}
-
-.toggle.active {
-  background: #FFF;
-  box-shadow: inset 0 2px 60px rgba(0, 0, 0, 0.1),
-    inset 0 2px 5px rgba(0, 0, 0, 0.1), inset 0 -2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .toggle.active .indicator {
@@ -102,7 +102,7 @@ body.active {
 
 .display.active {
   box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.9),
-  inset -5px -5px 10px rgba(255, 255, 255, 0.1);
+    inset -5px -5px 10px rgba(255, 255, 255, 0.1);
 }
 
 .match-numbers,
@@ -114,17 +114,17 @@ body.active {
   font-size: 4rem;
 }
 
-.result {
-  font-size: 3rem;
-  color: #1A4CF1;
+.match-numbers.active {
+  color: #eee;
 }
 
-.match-numbers.active {
-  color: #EEE;
+.result {
+  font-size: 3rem;
+  color: #1a4cf1;
 }
 
 .result.active {
-  color: #FFAB08;
+  color: #ffab08;
 }
 
 .buttons {
@@ -158,10 +158,9 @@ body.active {
 .operation.active,
 .equal.active,
 .numbers.active {
-  box-shadow:  5px 5px 10px rgba(0, 0, 0, 0.9),
-   -5px -5px 10px rgba(255, 255, 255, 0.1);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.9),
+    -5px -5px 10px rgba(255, 255, 255, 0.1);
 }
-
 
 .operation:active,
 .numbers:active {
@@ -169,19 +168,32 @@ body.active {
     inset -5px -5px 10px rgba(0, 0, 0, 0.1);
 }
 
+.numbers,
+.operation {
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  background: #eee;
+}
+
+.numbers.active,
+.operation.active {
+  background: #222;
+}
+
 .operation.active:active,
 .numbers.active:active {
   box-shadow: inset 5px 5px 10px rgba(255, 255, 255, 0.1),
-    inset -5px -5px 10px rgba(0, 0, 0, 0.0);
+    inset -5px -5px 10px rgba(0, 0, 0, 0);
 }
 
 .operation {
   font-size: 3rem;
-  color: #1A4CF1;
+  color: #1a4cf1;
 }
 
 .operation.active {
-  color: #FFAB08;
+  color: #ffab08;
 }
 
 .numbers {
@@ -189,33 +201,20 @@ body.active {
 }
 
 .numbers.active {
-  color: #EEE;
+  color: #eee;
 }
 
 .equal {
   grid-area: equal;
   border-radius: 50px;
-  background: #1A4CF1;
-  color: #EEE;
+  background: #1a4cf1;
+  color: #eee;
 }
 
 .equal.active {
-  background: #FFAB08;
+  background: #ffab08;
   color: #222;
 }
-
-.numbers,
-.operation {
-  border-radius: 50%;
-  width: 80px;
-  height: 80px;
-  background: #EEE;
-}
-
-.numbers.active,
-.operation.active {
-  background: #222;
-} 
 
 .one {
   grid-area: one;
