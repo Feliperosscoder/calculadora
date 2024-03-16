@@ -53,10 +53,8 @@ body {
 }
 
 .result {
-  
   font-size: 3rem;
   color: #1a4cf1;
- 
 }
 
 .buttons {
@@ -84,6 +82,13 @@ body {
     -5px -5px 10px rgba(255, 255, 255, 0.9);
   font-size: 3rem;
   font-weight: 600;
+  cursor: pointer;
+}
+
+.operation:active,
+.numbers:active {
+  box-shadow: inset 5px 5px 10px rgba(255, 255, 255, 0.9),
+    inset -5px -5px 10px rgba(0, 0, 0, 0.1);
 }
 
 .operation {
