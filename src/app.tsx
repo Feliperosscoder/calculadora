@@ -7,15 +7,17 @@ import { Button } from "./components/button";
 
 export function App() {
   const [data, setData] = useState({ operation: "", result: "" });
+  const [isActive, setIsActive] = useState(false);
   const operation = ["+", "-", "*", "/", "%", "."];
 
   function handleSwitcher() {
-    const body = document.querySelector("body")
-    const toggle  = document.querySelector(".toggle")
-    toggle?.classList.toggle("active")
-    body?.classList.toggle("active")
+    const body = document.querySelector("body");
+    const toggle = document.querySelector(".toggle");
+    setIsActive(!isActive);
+    toggle?.classList.toggle("active");
+    body?.classList.toggle("active");
   }
-  
+
   function handleTyping(event: string) {
     if (data.operation.length > 30) return;
     if (data.operation === "Error") {
@@ -142,51 +144,142 @@ export function App() {
   }
 
   return (
-    <div className="calculator">
-    <div className="container-toggle">
-    <div className="toggle" onClick={handleSwitcher}>
-        <i className="indicator"></i>
-     </div>
-    </div>
-      <div className="display">
-        <div className="match-numbers">
+    <div className={isActive ? "calculator active" : "calculator"}>
+      <div className="container-toggle">
+        <div className="toggle" onClick={handleSwitcher}>
+          <i className="indicator"></i>
+        </div>
+      </div>
+      <div className={isActive ? "display active" : "display"}>
+        <div className={isActive ? "match-numbers active" : "match-numbers"}>
           <Textfit mode="single" max={70}>
             {data.operation}
           </Textfit>
         </div>
-        <div className="result">
+        <div className={isActive ? "result active" : "result"}>
           <Textfit mode="single" max={70}>
             {data.result}
           </Textfit>
         </div>
       </div>
       <div className="buttons">
-        <Button text="AC" tipo="operation ac" handleClick={handleClear} />
-        <Button text="/" tipo="operation divide" handleClick={handleTyping} />
+        <Button
+          text="AC"
+          tipo="operation ac"
+          handleClick={handleClear}
+          isActive={isActive}
+        />
+        <Button
+          text="/"
+          tipo="operation divide"
+          handleClick={handleTyping}
+          isActive={isActive}
+        />
         <Button
           text="*"
           tipo="operation multiplier"
           handleClick={handleTyping}
+          isActive={isActive}
         />
-        <Button text="%" tipo="operation percent" handleClick={handleTyping} />
+        <Button
+          text="%"
+          tipo="operation percent"
+          handleClick={handleTyping}
+          isActive={isActive}
+        />
 
-        <Button text="7" tipo="numbers seven" handleClick={handleTyping} />
-        <Button text="8" tipo="numbers eight" handleClick={handleTyping} />
-        <Button text="9" tipo="numbers nine" handleClick={handleTyping} />
-        <Button text="C" tipo="operation delete" handleClick={handleDelete} />
+        <Button
+          text="7"
+          tipo="numbers seven"
+          handleClick={handleTyping}
+          isActive={isActive}
+        />
+        <Button
+          text="8"
+          tipo="numbers eight"
+          handleClick={handleTyping}
+          isActive={isActive}
+        />
+        <Button
+          text="9"
+          tipo="numbers nine"
+          handleClick={handleTyping}
+          isActive={isActive}
+        />
+        <Button
+          text="C"
+          tipo="operation delete"
+          handleClick={handleDelete}
+          isActive={isActive}
+        />
 
-        <Button text="4" tipo="numbers four" handleClick={handleTyping} />
-        <Button text="5" tipo="numbers five" handleClick={handleTyping} />
-        <Button text="6" tipo="numbers six" handleClick={handleTyping} />
-        <Button text="-" tipo="operation minus" handleClick={handleTyping} />
+        <Button
+          text="4"
+          tipo="numbers four"
+          handleClick={handleTyping}
+          isActive={isActive}
+        />
+        <Button
+          text="5"
+          tipo="numbers five"
+          handleClick={handleTyping}
+          isActive={isActive}
+        />
+        <Button
+          text="6"
+          tipo="numbers six"
+          handleClick={handleTyping}
+          isActive={isActive}
+        />
+        <Button
+          text="-"
+          tipo="operation minus"
+          handleClick={handleTyping}
+          isActive={isActive}
+        />
 
-        <Button text="1" tipo="numbers one" handleClick={handleTyping} />
-        <Button text="2" tipo="numbers two" handleClick={handleTyping} />
-        <Button text="3" tipo="numbers three" handleClick={handleTyping} />
-        <Button text="+" tipo="operation plus" handleClick={handleTyping} />
-        <Button text="." tipo="numbers comma" handleClick={handleTyping} />
-        <Button text="0" tipo="numbers zero" handleClick={handleTyping} />
-        <Button text="=" tipo="equal" handleClick={handleResult} />
+        <Button
+          text="1"
+          tipo="numbers one"
+          handleClick={handleTyping}
+          isActive={isActive}
+        />
+        <Button
+          text="2"
+          tipo="numbers two"
+          handleClick={handleTyping}
+          isActive={isActive}
+        />
+        <Button
+          text="3"
+          tipo="numbers three"
+          handleClick={handleTyping}
+          isActive={isActive}
+        />
+        <Button
+          text="+"
+          tipo="operation plus"
+          handleClick={handleTyping}
+          isActive={isActive}
+        />
+        <Button
+          text="."
+          tipo="numbers comma"
+          handleClick={handleTyping}
+          isActive={isActive}
+        />
+        <Button
+          text="0"
+          tipo="numbers zero"
+          handleClick={handleTyping}
+          isActive={isActive}
+        />
+        <Button
+          text="="
+          tipo="equal"
+          handleClick={handleResult}
+          isActive={isActive}
+        />
       </div>
     </div>
   );
