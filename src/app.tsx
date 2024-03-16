@@ -1,6 +1,6 @@
 import "./app.css";
 
-import {Textfit} from "react-textfit";
+import { Textfit } from "react-textfit";
 
 import { useState } from "react";
 import { Button } from "./components/button";
@@ -9,6 +9,13 @@ export function App() {
   const [data, setData] = useState({ operation: "", result: "" });
   const operation = ["+", "-", "*", "/", "%", "."];
 
+  function handleSwitcher() {
+    const body = document.querySelector("body")
+    const toggle  = document.querySelector(".toggle")
+    toggle?.classList.toggle("active")
+    body?.classList.toggle("active")
+  }
+  
   function handleTyping(event: string) {
     if (data.operation.length > 30) return;
     if (data.operation === "Error") {
@@ -34,17 +41,16 @@ export function App() {
     if (data.operation.includes("Error"))
       setData({ ...data, operation: event as string });
 
-      
-      if (event === ".") {
-        // Verifica se o último número na expressão já contém um ponto decimal
+    if (event === ".") {
+      // Verifica se o último número na expressão já contém um ponto decimal
       const numbersAndOperators = data.operation.split(/[-+*/]/);
       const lastNumber = numbersAndOperators.pop();
-        console.log(numbersAndOperators)
-        if (lastNumber && lastNumber.includes(".")) {
-          // Se o último número já contiver um ponto decimal, não permita adicionar outro
-          return;
-        }
+      console.log(numbersAndOperators);
+      if (lastNumber && lastNumber.includes(".")) {
+        // Se o último número já contiver um ponto decimal, não permita adicionar outro
+        return;
       }
+    }
     if (
       data.result !== "" &&
       data.operation === "" &&
@@ -137,6 +143,11 @@ export function App() {
 
   return (
     <div className="calculator">
+    <div className="container-toggle">
+    <div className="toggle" onClick={handleSwitcher}>
+        <i className="indicator"></i>
+     </div>
+    </div>
       <div className="display">
         <div className="match-numbers">
           <Textfit mode="single" max={70}>
